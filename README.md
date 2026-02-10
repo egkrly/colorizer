@@ -19,7 +19,35 @@ The solution consists of two components:
 
 ## Setup
 
-### 1. Python Server Setup
+### Option 1: Docker Setup (Recommended - Works on Windows, macOS, and Linux)
+
+This is the easiest way to get started and avoids platform-specific dependency issues.
+
+1. **Prerequisites**: Install [Docker](https://www.docker.com/get-started) and [Docker Compose](https://docs.docker.com/compose/install/)
+
+2. **Build and run the container**:
+```bash
+docker-compose up --build
+```
+
+The server will start on `http://localhost:3000`. The first run will:
+- Download all dependencies
+- Clone the DeOldify repository
+- Download the pre-trained model (~1.4GB) on first colorization request
+
+3. **Stop the server**:
+```bash
+docker-compose down
+```
+
+**Note**: The model file will be persisted in `server/DeOldify/models/` so you don't need to re-download it on subsequent runs.
+
+**GPU Support** (Optional): If you have an NVIDIA GPU and want to use it for faster processing:
+1. Install [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html)
+2. Uncomment the GPU section in `docker-compose.yml`
+3. Rebuild: `docker-compose up --build`
+
+### Option 2: Manual Python Server Setup
 
 1. Navigate to the server directory:
 ```bash
@@ -31,12 +59,22 @@ cd server
 pip install -r requirements.txt
 ```
 
-3. Start the server:
+3. Install DeOldify (choose one method):
+   - **Windows**: Run `install_deoldify.bat` or `install_deoldify.ps1`
+   - **macOS/Linux**: Run `./install_deoldify.sh`
+   - **Manual**: `git clone https://github.com/jantic/DeOldify.git server/DeOldify`
+
+4. Download the model (optional - will auto-download on first run):
+```bash
+python download_model.py
+```
+
+5. Start the server:
 ```bash
 python app.py
 ```
 
-The server will start on `http://localhost:5000`
+The server will start on `http://localhost:3000`
 
 ### 2. Browser Extension Setup
 
@@ -57,7 +95,9 @@ The server will start on `http://localhost:5000`
 
 ## Usage
 
-1. Make sure the Python server is running (`python server/app.py`)
+1. Make sure the Python server is running:
+   - **Docker**: `docker-compose up` (or already running in background)
+   - **Manual**: `python server/app.py`
 
 2. Navigate to any webpage with images
 
@@ -73,18 +113,12 @@ The server will start on `http://localhost:5000`
 
 ## Advanced Colorization Models
 
-The current implementation uses a simple colorization method. For better results, you can integrate advanced models:
+This project uses **DeOldify** for high-quality image colorization. DeOldify is already integrated and configured:
 
-### DeOldify
+- **Docker setup**: DeOldify is automatically installed and configured
+- **Manual setup**: Follow the installation instructions in `server/README.md`
 
-1. Install DeOldify:
-```bash
-pip install deoldify
-```
-
-2. Download pre-trained models (follow [DeOldify documentation](https://github.com/jantic/DeOldify))
-
-3. Uncomment and modify the DeOldify integration code in `server/colorizer.py`
+The DeOldify model provides state-of-the-art colorization results for grayscale and black & white images.
 
 ### Other Models
 
@@ -115,6 +149,8 @@ image-colorizer/
 │   ├── colorizer.py           # Image colorization logic
 │   ├── requirements.txt       # Python dependencies
 │   └── README.md              # Server-specific documentation
+├── Dockerfile                  # Docker configuration
+├── docker-compose.yml         # Docker Compose configuration
 └── README.md                   # This file
 ```
 
@@ -122,7 +158,7 @@ image-colorizer/
 
 ### Server Connection Issues
 
-- Make sure the Python server is running on `localhost:5000`
+- Make sure the Python server is running on `localhost:3000`
 - Check the extension popup for server connection status
 - Verify firewall settings allow localhost connections
 

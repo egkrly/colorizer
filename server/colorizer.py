@@ -6,8 +6,16 @@ DeOldify is a deep learning model for colorizing and restoring old images.
 import os
 import sys
 import tempfile
+import warnings
 from PIL import Image
 import numpy as np
+
+# Suppress expected warnings from DeOldify and dependencies
+warnings.filterwarnings("ignore", category=UserWarning, message=".*?Your .*? set is empty.*?")
+warnings.filterwarnings("ignore", category=UserWarning, message=".*?This DataLoader will create.*?")
+warnings.filterwarnings("ignore", category=UserWarning, message=".*?The parameter 'pretrained' is deprecated.*?")
+warnings.filterwarnings("ignore", category=UserWarning, message=".*?Arguments other than a weight enum.*?")
+warnings.filterwarnings("ignore", category=FutureWarning, message=".*?torch.nn.utils.weight_norm.*?")
 
 # Patch torch.load for PyTorch 2.6+ compatibility BEFORE any torch imports
 # PyTorch 2.6+ changed default weights_only=True, but DeOldify checkpoints need weights_only=False

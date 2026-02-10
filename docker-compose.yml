@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  colorizer-server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: colorizer-server
+    ports:
+      - "3000:3000"
+    volumes:
+      # Mount DeOldify models directory to persist downloaded models
+      - ./server/DeOldify/models:/app/server/DeOldify/models
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
+    # Optional: Uncomment to use GPU (requires nvidia-docker)
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]

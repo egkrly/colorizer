@@ -130,7 +130,7 @@ async function sendToServer(imageBase64, retries = 2) {
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 60000); // 60 second timeout for processing
       
-      const response = await fetch('http://localhost:5000/colorize', {
+      const response = await fetch('http://localhost:3000/colorize', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -193,7 +193,7 @@ async function sendToServer(imageBase64, retries = 2) {
           await new Promise(resolve => setTimeout(resolve, 1000 * (attempt + 1)));
           continue;
         }
-        throw new Error("Cannot connect to server. Make sure the server is running on localhost:5000");
+        throw new Error("Cannot connect to server. Make sure the server is running on localhost:3000");
       }
       
       // If it's the last attempt or a non-retryable error, throw it

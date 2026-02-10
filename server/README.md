@@ -46,7 +46,7 @@ This will download the `ColorizeArtistic_gen.pth` model file (~1.4GB) to `DeOldi
 python app.py
 ```
 
-The server will start on `http://localhost:5000`. On first startup, DeOldify will load the pre-trained model.
+The server will start on `http://localhost:3000`. On first startup, DeOldify will load the pre-trained model.
 
 **System Requirements:**
 - Python 3.8+

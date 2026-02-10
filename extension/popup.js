@@ -12,7 +12,7 @@ async function checkServerStatus() {
     const controller = new AbortController();
     const timeoutId = setTimeout(() => controller.abort(), 3000);
     
-    const response = await fetch('http://localhost:5000/health', {
+    const response = await fetch('http://localhost:3000/health', {
       method: 'GET',
       signal: controller.signal
     });
@@ -36,7 +36,7 @@ async function checkServerStatus() {
     } else if (error.message) {
       errorMessage += ` (${error.message})`;
     } else {
-      errorMessage += ' (Make sure server is running on localhost:5000)';
+      errorMessage += ' (Make sure server is running on localhost:3000)';
     }
     
     statusDiv.textContent = errorMessage;

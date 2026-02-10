@@ -103,10 +103,10 @@ def init_colorizer():
 
 if __name__ == '__main__':
     print("Starting Image Colorizer Server...")
-    print("Server will be available at http://localhost:5000")
+    print("Server will be available at http://localhost:3000")
     
     # Initialize colorizer before starting server
     init_colorizer()
     
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=3000, debug=True)
 

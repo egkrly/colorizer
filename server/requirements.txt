@@ -1,7 +1,7 @@
 Flask>=3.0.0
 flask-cors>=4.0.0
 Pillow>=10.2.0
-numpy>=1.26.0
+numpy>=1.26.0,<2.0.0
 
 # DeOldify and dependencies
 # IMPORTANT: DeOldify cannot be installed via pip from PyPI.
@@ -14,3 +14,15 @@ fastai>=2.7.0
 # Required for DeOldify (pkg_resources is not available in setuptools>=70)
 setuptools<70
 
+
+# IPython required by DeOldify's fastai imports
+ipython>=7.0.0
+
+# Additional DeOldify dependencies
+opencv-python>=4.2.0.32
+ffmpeg-python
+yt-dlp
+
+# Additional optional DeOldify dependencies
+wandb
+tensorboardX>=1.6
