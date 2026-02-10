@@ -1,6 +1,8 @@
 # Quick DeOldify Installation (No Pip Install Needed)
 
-Since DeOldify's setup.py has a bug, we'll just clone it and use it directly.
+> **Note:** For easiest setup, consider using Docker instead. See the main [README.md](../../README.md) for Docker instructions.
+
+Since DeOldify's setup.py has issues, we'll just clone it and use it directly.
 
 ## Simple 3-Step Installation
 

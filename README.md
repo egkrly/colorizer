@@ -120,14 +120,6 @@ This project uses **DeOldify** for high-quality image colorization. DeOldify is 
 
 The DeOldify model provides state-of-the-art colorization results for grayscale and black & white images.
 
-### Other Models
-
-You can integrate other colorization models like:
-- Colorful Image Colorization
-- Let there be Color
-- Any PyTorch/TensorFlow colorization model
-
-See `server/colorizer.py` for integration examples.
 
 ## File Structure
 
@@ -178,25 +170,27 @@ image-colorizer/
 ## Limitations
 
 - Images are limited to 10MB on client side, 20MB on server side
-- Large images may take time to process
+- Large images may take time to process (especially on CPU)
 - Server must be running locally
-- Current colorization uses a simple method (enhance with ML models for better results)
+- First model download is ~1.4GB
+- GPU recommended for faster processing
 
 ## Development
 
 ### Testing the Extension
 
-1. Start the server: `python server/app.py`
+1. Start the server:
+   - **Docker**: `docker-compose up`
+   - **Manual**: `python server/app.py`
 2. Load the extension in your browser
 3. Test on various websites with grayscale images
 4. Check browser console (F12) for any errors
 
-### Adding Better Colorization Models
+### Modifying the Server
 
-1. Install the model library (e.g., DeOldify)
-2. Modify `server/colorizer.py` to use the model
-3. Update `server/requirements.txt` with new dependencies
-4. Test with sample images
+1. Edit files in `server/` directory
+2. **Docker**: Rebuild with `docker-compose up --build`
+3. **Manual**: Restart the server
 
 ## License
 

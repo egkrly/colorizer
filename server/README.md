@@ -4,15 +4,26 @@ Python Flask server for colorizing grayscale and black & white images using DeOl
 
 ## Setup
 
+### Option 1: Docker (Recommended)
+
+The easiest way to run the server is using Docker. See the main [README.md](../README.md) or [DOCKER.md](../DOCKER.md) for Docker setup instructions.
+
+### Option 2: Manual Installation
+
+If you prefer to install manually or cannot use Docker:
+
 1. Install Python dependencies:
 
-**Option A: Use the installation script (Recommended for Windows)**
+**Option A: Use the installation script**
 ```bash
-# PowerShell
+# Windows PowerShell
 .\install_deoldify.ps1
 
-# Or Command Prompt
+# Windows Command Prompt
 install_deoldify.bat
+
+# macOS/Linux
+./install_deoldify.sh
 ```
 
 **Option B: Manual installation**
@@ -20,15 +31,15 @@ install_deoldify.bat
 # Install base dependencies
 pip install -r requirements.txt
 
-# Install DeOldify from GitHub (requires Git to be installed)
-pip install git+https://github.com/jantic/DeOldify.git
+# Clone DeOldify (no pip install needed - server will auto-detect it)
+git clone https://github.com/jantic/DeOldify.git server/DeOldify
 ```
 
-**Important:** DeOldify cannot be installed from PyPI. It must be installed from GitHub using the command above. If you don't have Git installed, download it from https://git-scm.com/download/win
+**Important:** DeOldify cannot be installed from PyPI. It must be cloned from GitHub. The server automatically detects DeOldify if it's in the `server/DeOldify` directory.
 
 **Note:** Installing DeOldify and its dependencies (PyTorch, FastAI) may take several minutes and requires significant disk space (~2-3GB). The first run will also download pre-trained models automatically.
 
-See `INSTALL.md` for detailed troubleshooting instructions.
+See `INSTALL.md` or `QUICK_INSTALL.md` for detailed troubleshooting instructions.
 
 2. Download the pre-trained model:
 ```bash

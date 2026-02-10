@@ -1,5 +1,7 @@
 # Manual DeOldify Installation (Alternative Method)
 
+> **Note:** For easiest setup, consider using Docker instead. See the main [README.md](../../README.md) for Docker instructions.
+
 If the automated installation scripts fail, follow these manual steps:
 
 ## Step 1: Install Dependencies

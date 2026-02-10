@@ -92,11 +92,25 @@ ports:
   - "3001:3000"  # Use 3001 on host, 3000 in container
 ```
 
-### Out of disk space
-The Docker image and model require ~5-6GB of space. Clean up unused Docker resources:
-```bash
-docker system prune -a
-```
+### Out of disk space during build
+The Docker image and model require ~5-6GB of space. If you get "You don't have enough free space" errors during build:
+
+1. **Clean up unused Docker resources**:
+   ```bash
+   docker system prune -a --volumes -f
+   ```
+
+2. **Check Docker disk usage**:
+   ```bash
+   docker system df
+   ```
+
+3. **If still having issues**, you can use the cleanup script:
+   ```bash
+   ./docker-clean.sh
+   ```
+
+The Dockerfile uses `--no-install-recommends` to minimize package size, but ffmpeg (required by DeOldify) still pulls in many dependencies.
 
 ### Model download fails
 If automatic model download fails, you can manually download it:
