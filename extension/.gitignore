@@ -1,0 +1,23 @@
+# Build and package
+*.zip
+*.crx
+*.xpi
+web-ext-artifacts/
+
+# IDE and editor
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Optional: uncomment if you add build tooling
+# node_modules/

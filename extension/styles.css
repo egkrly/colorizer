@@ -1,0 +1,51 @@
+/* Toggle button removed - using context menu instead */
+
+.colorizer-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 14px;
+  z-index: 10001;
+  pointer-events: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.colorizer-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #333;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  z-index: 100000;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: opacity 0.3s, transform 0.3s;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  max-width: 300px;
+}
+
+.colorizer-notification-show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.colorizer-notification-success {
+  background: #4caf50;
+}
+
+.colorizer-notification-error {
+  background: #f44336;
+}
+
+.colorizer-notification-info {
+  background: #2196f3;
+}
+

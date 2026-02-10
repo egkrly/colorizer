@@ -1,0 +1,16 @@
+Flask>=3.0.0
+flask-cors>=4.0.0
+Pillow>=10.2.0
+numpy>=1.26.0
+
+# DeOldify and dependencies
+# IMPORTANT: DeOldify cannot be installed via pip from PyPI.
+# Install it separately by cloning: git clone https://github.com/jantic/DeOldify.git
+# Or see INSTALL.md for detailed instructions
+torch>=2.0.0
+torchvision>=0.15.0
+fastai>=2.7.0
+
+# Required for DeOldify (pkg_resources is not available in setuptools>=70)
+setuptools<70
+
